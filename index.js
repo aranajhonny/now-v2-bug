@@ -1,7 +1,12 @@
 const axios = require("axios");
 
-module.exports = (req, res) => {
-  axios.get("https://github.com").then(function(res) {
-    res.end("done");
-  });
+module.exports = async (req, res) => {
+  try {
+    const data = await axios.get("https://github.com");
+    if (data) {
+      res.end("ok");
+    }
+  } catch (e) {
+    console.log(e)
+  }
 };
